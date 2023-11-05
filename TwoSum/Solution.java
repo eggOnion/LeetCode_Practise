@@ -9,9 +9,9 @@ public class Solution{
         int[] result = new int[2];
 
 
-        for(int i=0; i<nums.length; i++){
+        for(int i=genesisIndex; i<nums.length; i++){
         
-            if((i+1) != nums.length)        //this is a protection to prevent ArrayIndexOutOfBounds
+            if((i+1) != nums.length)        //A protection to prevent ArrayIndexOutOfBounds
                 sum = nums[genesisIndex] + nums[i+1];            
 
             if(sum==target){
@@ -20,12 +20,12 @@ public class Solution{
                 break;
             }
 
-            if(sum!=target && (i == nums.length-1)){   
+            if(sum!=target && (i == nums.length-1)){    //Reaches the last index in the array
                 
-                if(genesisIndex==nums.length-1)
+                if(genesisIndex==nums.length-1)     //final step to break the for loop if sum no match target
                     break;
                 
-                i=0;      
+                i=genesisIndex;      
                 sum=0;       
                 genesisIndex++;
                 continue;                
@@ -36,8 +36,8 @@ public class Solution{
    }
     public static void main(String[] args) {
               
-        int[] nums = {2,7,11,15};
-        int target = 17;        
+        int[] nums = {2,1,9,4,4,56,90,3};
+        int target = 8;        
 
         System.out.println(Arrays.toString(twoSum(nums, target)));     
     }        
